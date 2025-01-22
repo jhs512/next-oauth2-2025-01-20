@@ -5,6 +5,7 @@ import "./globals.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { ClientLayout } from "./ClientLayout";
+import { Toaster } from "@/components/ui/toaster";
 config.autoAddCss = false;
 
 const pretendard = localFont({
@@ -33,7 +34,10 @@ export default function RootLayout({
       <body
         className={`${pretendard.className} antialiased flex flex-col min-h-[100dvh]`}
       >
-        <ClientLayout>{children}</ClientLayout>
+        <ClientLayout>
+          {children}
+          <Toaster />
+        </ClientLayout>
       </body>
     </html>
   );
