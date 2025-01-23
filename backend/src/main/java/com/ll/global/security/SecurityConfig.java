@@ -19,6 +19,7 @@ import java.util.Arrays;
 @RequiredArgsConstructor
 public class SecurityConfig {
     private final CustomAuthenticationFilter customAuthenticationFilter;
+    private final CustomOAuth2AuthenticationSuccessHandler customOAuth2AuthenticationSuccessHandler;
 
     @Bean
     public SecurityFilterChain baseSecurityFilterChain(HttpSecurity http) throws Exception {
@@ -52,10 +53,8 @@ public class SecurityConfig {
                                 csrf.disable()
                 )
                 .oauth2Login(
-                        oauth2Login ->
-                        {
-
-                        }
+                        oauth2Login -> oauth2Login
+                                .successHandler(customOAuth2AuthenticationSuccessHandler)
                 )
                 .addFilterBefore(customAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling(
