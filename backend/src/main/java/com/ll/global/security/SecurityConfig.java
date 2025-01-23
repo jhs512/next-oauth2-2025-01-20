@@ -51,6 +51,12 @@ public class SecurityConfig {
                         csrf ->
                                 csrf.disable()
                 )
+                .oauth2Login(
+                        oauth2Login ->
+                        {
+
+                        }
+                )
                 .addFilterBefore(customAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling(
                         exceptionHandling -> exceptionHandling
