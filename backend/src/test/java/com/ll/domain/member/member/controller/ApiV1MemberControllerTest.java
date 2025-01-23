@@ -298,7 +298,10 @@ public class ApiV1MemberControllerTest {
                 .andExpect(handler().methodName("me"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(actor.getId()))
-                .andExpect(jsonPath("$.nickname").value(actor.getNickname()));
+                .andExpect(jsonPath("$.nickname").value(actor.getNickname()))
+                .andExpect(jsonPath("$.createDate").value(Matchers.startsWith(actor.getCreateDate().toString().substring(0, 20))))
+                .andExpect(jsonPath("$.modifyDate").value(Matchers.startsWith(actor.getModifyDate().toString().substring(0, 20))))
+                .andExpect(jsonPath("$.profileImgUrl").value(actor.getProfileImgUrl()));
     }
 
     @Test
@@ -319,7 +322,10 @@ public class ApiV1MemberControllerTest {
                 .andExpect(handler().methodName("me"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(actor.getId()))
-                .andExpect(jsonPath("$.nickname").value(actor.getNickname()));
+                .andExpect(jsonPath("$.nickname").value(actor.getNickname()))
+                .andExpect(jsonPath("$.createDate").value(Matchers.startsWith(actor.getCreateDate().toString().substring(0, 20))))
+                .andExpect(jsonPath("$.modifyDate").value(Matchers.startsWith(actor.getModifyDate().toString().substring(0, 20))))
+                .andExpect(jsonPath("$.profileImgUrl").value(actor.getProfileImgUrl()));
     }
 
     @Test
@@ -393,7 +399,8 @@ public class ApiV1MemberControllerTest {
                 .andExpect(jsonPath("$.data.id").value(3))
                 .andExpect(jsonPath("$.data.createDate").exists())
                 .andExpect(jsonPath("$.data.modifyDate").exists())
-                .andExpect(jsonPath("$.data.nickname").value("새별명"));
+                .andExpect(jsonPath("$.data.nickname").value("새별명"))
+                .andExpect(jsonPath("$.data.profileImgUrl").exists());
 
         resultActions.andExpect(
                 result -> {

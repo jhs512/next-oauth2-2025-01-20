@@ -31,6 +31,8 @@ public class Member extends BaseTime {
     @Column(unique = true, length = 50)
     private String apiKey;
 
+    private String profileImgUrl;
+
     public String getName() {
         return nickname;
     }
@@ -63,6 +65,10 @@ public class Member extends BaseTime {
             authorities.add("ROLE_ADMIN");
 
         return authorities;
+    }
+
+    public String getProfileImgUrlOrDefault() {
+        return profileImgUrl == null ? "https://placehold.co/640x640?text=O_O" : profileImgUrl;
     }
 }
 
