@@ -1,6 +1,7 @@
 package com.ll.domain.member.member.entity;
 
 import com.ll.global.jpa.entity.BaseTime;
+import com.ll.standard.util.Ut;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.*;
@@ -68,7 +69,7 @@ public class Member extends BaseTime {
     }
 
     public String getProfileImgUrlOrDefault() {
-        return profileImgUrl == null ? "https://placehold.co/640x640?text=O_O" : profileImgUrl;
+        return Ut.str.isBlank(profileImgUrl) ? "https://placehold.co/640x640?text=O_O" : profileImgUrl;
     }
 }
 
