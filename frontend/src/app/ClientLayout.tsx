@@ -5,7 +5,7 @@ import ThemeToggleButton from "@/lib/business/components/ThemeToggleButton";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import * as React from "react";
 
-import { Home, LogIn } from "lucide-react";
+import { Copyright, Home, LogIn } from "lucide-react";
 
 import { LoginMemberContext, useLoginMember } from "@/stores/auth/loginMember";
 
@@ -70,6 +70,17 @@ export function ClientLayout({
               <Home /> 홈
             </Link>
           </Button>
+          <div className="flex-grow"></div>
+          {isLogin && <MeMenuButton />}
+          <ThemeToggleButton />
+        </header>
+        <main className="flex-1 flex flex-col">{children}</main>
+        <footer className="p-2 flex justify-center">
+          <Button variant="link" asChild>
+            <Link href="/">
+              <Copyright /> 2025 글로그
+            </Link>
+          </Button>
           {!isLogin && (
             <Button variant="link" asChild>
               <Link href="/adm/member/login">
@@ -77,13 +88,6 @@ export function ClientLayout({
               </Link>
             </Button>
           )}
-          <div className="flex-grow"></div>
-          {isLogin && <MeMenuButton />}
-          <ThemeToggleButton />
-        </header>
-        <main className="flex-1 flex flex-col">{children}</main>
-        <footer className="p-2 flex justify-center">
-          <span>© 2025 글로그</span>
         </footer>
       </LoginMemberContext>
     </NextThemesProvider>
