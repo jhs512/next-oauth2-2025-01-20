@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { LoginMemberContext } from "@/stores/auth/loginMember";
 import { use } from "react";
 
@@ -11,9 +12,13 @@ export default function ClientPage() {
       <div>
         <div>별명 : {loginMember.nickname}</div>
         <div className="mt-2 flex justify-center">
-          <img
-            className="w-20 h-20 rounded-full object-cover"
+          <Image
+            className="rounded-full"
             src={loginMember.profileImgUrl}
+            alt={loginMember.nickname}
+            width={80}
+            height={80}
+            quality={100}
           />
         </div>
       </div>
