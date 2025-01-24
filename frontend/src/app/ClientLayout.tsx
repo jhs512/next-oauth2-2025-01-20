@@ -38,13 +38,18 @@ export function ClientLayout({
   };
 
   useEffect(() => {
-    client.GET("/api/v1/members/me").then((res) => {
-      if (res.error) {
-        setNoLoginMember();
-      } else {
-        setLoginMember(res.data);
-      }
-    });
+    const fetchMember = () => {
+      client.GET("/api/v1/members/me").then((res) => {
+        if (res.error) {
+          setNoLoginMember();
+        } else {
+          setLoginMember(res.data);
+        }
+      });
+    };
+
+    fetchMember();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isLoginMemberPending) {
