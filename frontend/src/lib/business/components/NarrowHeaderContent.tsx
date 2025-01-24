@@ -7,6 +7,7 @@ import Link from "next/link";
 import { use } from "react";
 import MeMenuButton from "./MeMenuButton";
 import ThemeToggleButton from "./ThemeToggleButton";
+import Logo from "./Logo";
 
 export default function NarrowHeaderContent({
   className,
@@ -21,9 +22,7 @@ export default function NarrowHeaderContent({
         <Menu />
       </Button>
       <Button variant="link" asChild>
-        <Link href="/">
-          <Triangle />
-        </Link>
+        <Logo />
       </Button>
       <div className="flex-grow"></div>
       {isLogin && <MeMenuButton />}

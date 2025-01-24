@@ -7,6 +7,7 @@ import Link from "next/link";
 import { use } from "react";
 import MeMenuButton from "./MeMenuButton";
 import ThemeToggleButton from "./ThemeToggleButton";
+import Logo from "./Logo";
 
 export default function WideHeaderContent({
   className,
@@ -18,9 +19,7 @@ export default function WideHeaderContent({
   return (
     <div className={`${className} py-1`}>
       <Button variant="link" asChild>
-        <Link href="/">
-          <Triangle /> 글로그
-        </Link>
+        <Logo text />
       </Button>
       <div className="flex-grow"></div>
       {isLogin && <MeMenuButton />}
