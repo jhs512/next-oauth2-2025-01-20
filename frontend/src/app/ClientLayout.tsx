@@ -14,14 +14,12 @@ import { LoginMemberContext, useLoginMember } from "@/stores/auth/loginMember";
 import { Button } from "@/components/ui/button";
 import client from "@/lib/backend/client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import MeMenuButton from "@/lib/business/components/MeMenuButton";
 
 export function ClientLayout({
   children,
 }: React.ComponentProps<typeof NextThemesProvider>) {
-  const router = useRouter();
-
   const {
     setLoginMember,
     isLogin,
@@ -60,13 +58,6 @@ export function ClientLayout({
     );
   }
 
-  const logout = () => {
-    client.DELETE("/api/v1/members/logout").then((res) => {
-      removeLoginMember();
-      router.replace("/");
-    });
-  };
-
   return (
     <NextThemesProvider
       attribute="class"
@@ -81,33 +72,6 @@ export function ClientLayout({
               <Home /> 홈
             </Link>
           </Button>
-          {isAdmin && (
-            <Button variant="link" asChild>
-              <Link href="/adm">
-                <Settings /> 관리자
-              </Link>
-            </Button>
-          )}
-          {isLogin && (
-            <Button variant="link" asChild>
-              <Link href="/member/me">
-                <User /> {loginMember.nickname}
-                <Image
-                  className="rounded-full"
-                  src={loginMember.profileImgUrl}
-                  alt={loginMember.nickname}
-                  width={32}
-                  height={32}
-                  quality={100}
-                />
-              </Link>
-            </Button>
-          )}
-          {isLogin && (
-            <Button variant="link" onClick={logout}>
-              <LogOut /> 로그아웃
-            </Button>
-          )}
           {!isLogin && (
             <Button variant="link" asChild>
               <Link href="/adm/member/login">
@@ -116,6 +80,7 @@ export function ClientLayout({
             </Button>
           )}
           <div className="flex-grow"></div>
+          {isLogin && <MeMenuButton />}
           <ThemeToggleButton />
         </header>
         <main className="flex-1 flex flex-col">{children}</main>
