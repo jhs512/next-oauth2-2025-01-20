@@ -1,10 +1,10 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { LoginMemberContext } from "@/stores/auth/loginMember";
+import { useGlobalLoginMember } from "@/stores/auth/loginMember";
 import { Pencil, TableOfContents } from "lucide-react";
 import Link from "next/link";
-import { use } from "react";
+
 import Logo from "./Logo";
 import MeMenuButton from "./MeMenuButton";
 import ThemeToggleButton from "./ThemeToggleButton";
@@ -14,7 +14,7 @@ export default function WideHeaderContent({
 }: {
   className?: string;
 }) {
-  const { isLogin } = use(LoginMemberContext);
+  const { isLogin } = useGlobalLoginMember();
 
   return (
     <div className={`${className} py-1`}>
@@ -26,11 +26,13 @@ export default function WideHeaderContent({
           <TableOfContents /> 글
         </Link>
       </Button>
-      <Button variant="link" asChild>
-        <Link href="/post/list">
-          <Pencil /> 작성
-        </Link>
-      </Button>
+      {isLogin && (
+        <Button variant="link" asChild>
+          <Link href="/post/list">
+            <Pencil /> 작성
+          </Link>
+        </Button>
+      )}
       <div className="flex-grow"></div>
       {isLogin && <MeMenuButton />}
       <ThemeToggleButton />
