@@ -31,13 +31,16 @@ export default function RootLayout({
       className={`${pretendard.variable}`}
       suppressHydrationWarning
     >
-      <body
-        className={`${pretendard.className} antialiased flex flex-col min-h-[100dvh]`}
-      >
-        <ClientLayout>
-          {children}
-          <Toaster />
-        </ClientLayout>
+      <body className={`${pretendard.className} antialiased`}>
+        <div
+          className="flex flex-col min-h-[100dvh] bg-background"
+          vaul-drawer-wrapper="true"
+        >
+          <ClientLayout>
+            {children}
+            <Toaster />
+          </ClientLayout>
+        </div>
       </body>
     </html>
   );
