@@ -22,23 +22,25 @@ export function ClientLayout({
   children,
 }: React.ComponentProps<typeof NextThemesProvider>) {
   const {
-    isLoginMemberPending,
-    setNoLoginMember,
     loginMember,
     setLoginMember,
-    logout,
+    isLoginMemberPending,
+    setNoLoginMember,
     isLogin,
     isAdmin,
+    logout,
+    logoutAndHome,
   } = useLoginMember();
 
   const loginMemberContextValue = {
-    isLoginMemberPending,
-    setNoLoginMember,
     loginMember,
     setLoginMember,
-    logout,
+    isLoginMemberPending,
+    setNoLoginMember,
     isLogin,
     isAdmin,
+    logout,
+    logoutAndHome,
   };
 
   useEffect(() => {
