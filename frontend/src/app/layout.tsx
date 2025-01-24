@@ -1,11 +1,14 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
-
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { ClientLayout } from "./ClientLayout";
+import type { Metadata } from "next";
+
+import localFont from "next/font/local";
+
 import { Toaster } from "@/components/ui/toaster";
+
+import { ClientLayout } from "./ClientLayout";
+import "./globals.css";
+
 config.autoAddCss = false;
 
 const pretendard = localFont({
