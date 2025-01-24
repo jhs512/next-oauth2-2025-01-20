@@ -1,17 +1,16 @@
 "use client";
 
-import ThemeToggleButton from "@/lib/business/components/ThemeToggleButton";
-
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import * as React from "react";
 
-import { Copyright, Home, LogIn } from "lucide-react";
+import { Copyright, LogIn } from "lucide-react";
 
 import { LoginMemberContext, useLoginMember } from "@/stores/auth/loginMember";
 
 import { Button } from "@/components/ui/button";
 import client from "@/lib/backend/client";
-import MeMenuButton from "@/lib/business/components/MeMenuButton";
+import NarrowHeaderContent from "@/lib/business/components/NarrowHeaderContent";
+import WideHeaderContent from "@/lib/business/components/WideHeaderContent";
 import Link from "next/link";
 import { useEffect } from "react";
 
@@ -64,15 +63,9 @@ export function ClientLayout({
       disableTransitionOnChange
     >
       <LoginMemberContext value={loginMemberContextValue}>
-        <header className="flex p-2">
-          <Button variant="link" asChild>
-            <Link href="/">
-              <Home /> 홈
-            </Link>
-          </Button>
-          <div className="flex-grow"></div>
-          {isLogin && <MeMenuButton />}
-          <ThemeToggleButton />
+        <header>
+          <NarrowHeaderContent className="flex lg:hidden" />
+          <WideHeaderContent className="hidden lg:flex" />
         </header>
         <main className="flex-1 flex flex-col">{children}</main>
         <footer className="p-2 flex justify-center">
