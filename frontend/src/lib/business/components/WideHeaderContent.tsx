@@ -2,12 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import { LoginMemberContext } from "@/stores/auth/loginMember";
-import { Home, Triangle } from "lucide-react";
+import { Pencil, TableOfContents } from "lucide-react";
 import Link from "next/link";
 import { use } from "react";
+import Logo from "./Logo";
 import MeMenuButton from "./MeMenuButton";
 import ThemeToggleButton from "./ThemeToggleButton";
-import Logo from "./Logo";
 
 export default function WideHeaderContent({
   className,
@@ -20,6 +20,16 @@ export default function WideHeaderContent({
     <div className={`${className} py-1`}>
       <Button variant="link" asChild>
         <Logo text />
+      </Button>
+      <Button variant="link" asChild>
+        <Link href="/post/list">
+          <TableOfContents /> 글
+        </Link>
+      </Button>
+      <Button variant="link" asChild>
+        <Link href="/post/list">
+          <Pencil /> 작성
+        </Link>
       </Button>
       <div className="flex-grow"></div>
       {isLogin && <MeMenuButton />}

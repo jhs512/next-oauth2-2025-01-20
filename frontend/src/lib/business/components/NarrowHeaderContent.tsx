@@ -2,12 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import { LoginMemberContext } from "@/stores/auth/loginMember";
-import { Home, Menu, Triangle } from "lucide-react";
+import { Menu, Pencil, TableOfContents } from "lucide-react";
 import Link from "next/link";
 import { use } from "react";
+import Logo from "./Logo";
 import MeMenuButton from "./MeMenuButton";
 import ThemeToggleButton from "./ThemeToggleButton";
-import Logo from "./Logo";
 
 export default function NarrowHeaderContent({
   className,
@@ -23,6 +23,16 @@ export default function NarrowHeaderContent({
       </Button>
       <Button variant="link" asChild>
         <Logo />
+      </Button>
+      <Button variant="link" asChild>
+        <Link href="/post/list">
+          <TableOfContents /> 글
+        </Link>
+      </Button>
+      <Button variant="link" asChild>
+        <Link href="/post/list">
+          <Pencil /> 작성
+        </Link>
       </Button>
       <div className="flex-grow"></div>
       {isLogin && <MeMenuButton />}
