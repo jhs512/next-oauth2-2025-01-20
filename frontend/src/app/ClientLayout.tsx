@@ -1,21 +1,19 @@
 "use client";
 
-import Image from "next/image";
-
 import ThemeToggleButton from "@/lib/business/components/ThemeToggleButton";
 
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import * as React from "react";
 
-import { Home, LogIn, LogOut, Settings, User } from "lucide-react";
+import { Home, LogIn } from "lucide-react";
 
 import { LoginMemberContext, useLoginMember } from "@/stores/auth/loginMember";
 
 import { Button } from "@/components/ui/button";
 import client from "@/lib/backend/client";
+import MeMenuButton from "@/lib/business/components/MeMenuButton";
 import Link from "next/link";
 import { useEffect } from "react";
-import MeMenuButton from "@/lib/business/components/MeMenuButton";
 
 export function ClientLayout({
   children,

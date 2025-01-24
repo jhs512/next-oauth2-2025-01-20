@@ -1,10 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { use } from "react";
-import { LoginMemberContext } from "@/stores/auth/loginMember";
-import { LogOut, MonitorCog, Settings, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -13,7 +8,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import client from "@/lib/backend/client";
+import { LoginMemberContext } from "@/stores/auth/loginMember";
+import { LogOut, MonitorCog, User } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { use } from "react";
 
 export default function MeMenuButton() {
   const router = useRouter();
